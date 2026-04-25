@@ -10,4 +10,8 @@ export class AppService {
     return '...';
   }
 
+  getIsOk(): string {
+    return 'Ok, o servidor está funcionando corretamente!';
+  }
+
 }

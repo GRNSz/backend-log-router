@@ -10,9 +10,9 @@ export class AppController {
     return this.appService.getTeste();
   }
 
-  @Get('/usuarios')
-  getUsuarios(): string {
-    return this.appService.getUsuarios();
+  @Get('/')
+  getIsOk(): string {
+    return this.appService.getIsOk();
   }
   
 }
