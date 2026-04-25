@@ -1,8 +1,17 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, Req } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+  HttpCode,
+  HttpStatus,
+} from '@nestjs/common';
 import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
-import { Request } from 'express';
 
 @Controller('users')
 export class UsersController {
@@ -14,7 +23,7 @@ export class UsersController {
   }
 
   @Get('/listadeusuarios')
-  findAll(@Req() request: Request): string {
+  findAll() {
     return this.usersService.findAll();
   }
 
@@ -29,6 +38,7 @@ export class UsersController {
   }
 
   @Delete('/listadeusuarios/:id')
+  @HttpCode(HttpStatus.NO_CONTENT)
   remove(@Param('id') id: string) {
     return this.usersService.remove(+id);
   }

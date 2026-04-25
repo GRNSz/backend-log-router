@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  db:
+    image: mysql:8.0
+    container_name: logrouter-mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: '1234'
+      MYSQL_DATABASE: logrouterdb
+    ports:
+      - '3306:3306'
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+  app:
+    build:
+      context: .
+      dockerfile: dockerfile
+    container_name: logrouter-app
+    restart: unless-stopped
+    depends_on:
+      - db
+    environment:
+      DB_HOST: db
+      DB_PORT: '3306'
+      DB_USER: root
+      DB_PASSWORD: '1234'
+      DB_NAME: logrouterdb
+      PORT: '3000'
+    ports:
+      - '3000:3000'
+
+volumes:
+  mysql_data:

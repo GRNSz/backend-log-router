@@ -1,4 +1,12 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+} from '@nestjs/common';
 import { FrotaService } from './frota.service';
 import { CreateFrotaDto } from './dto/create-frota.dto';
 import { UpdateFrotaDto } from './dto/update-frota.dto';
