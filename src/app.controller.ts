@@ -14,5 +14,4 @@ export class AppController {
   getIsOk(): string {
     return this.appService.getIsOk();
   }
-  
 }
